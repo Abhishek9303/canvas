@@ -14,7 +14,7 @@ const Canvas = () => {
 
     useGSAP(() => {
         gsap.to(index, {
-            value: canvasImages.length - 1,
+            value: 1146,
             duration: 10, // Reduced duration for faster animation
             ease: "linear",
             scrollTrigger: {
@@ -51,7 +51,7 @@ const Canvas = () => {
         image.onload = () => {
             resizeCanvas();
         };
-        image.src = canvasImages[index.value];
+        image.src = `/newImages/frame_${String(index.value + 1).padStart(4, '0')}.jpeg`;
 
         window.addEventListener('resize', resizeCanvas);
         return () => {
@@ -61,7 +61,7 @@ const Canvas = () => {
 
     return (
         <div ref={canvasDiv} className='bg-slate-700 h-screen text-cyan-50 p-2 flex items-center justify-center'>
-            <canvas ref={canvasRef} className='block mx-auto fixed'></canvas>
+            <canvas ref={canvasRef} className='block mx-auto fixed h-screen w-screen'></canvas>
         </div>
     );
 }
